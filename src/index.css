@@ -1,0 +1,622 @@
+@import "tailwindcss";
+
+@variant dark (&:where([data-theme=dark], [data-theme=dark] *, .dark, .dark *, html.dark, html.dark *, body.night, body.night *));
+
+@property --c1 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #6ee7b7;
+}
+
+@property --c2 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #34d399;
+}
+
+@property --c3 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #10b981;
+}
+
+@property --c4 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #047857;
+}
+
+@property --accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #10b981;
+}
+
+@property --accent-2 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #059669;
+}
+
+@property --accent-deep {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #047857;
+}
+
+:root {
+  --c1: #6ee7b7;
+  --c2: #34d399;
+  --c3: #10b981;
+  --c4: #047857;
+  --accent: #10b981;
+  --accent-2: #059669;
+  --accent-soft: rgba(16, 185, 129, 0.14);
+  --accent-deep: #047857;
+  --bg-radial: #e8eef5;
+  --bg-base: #f5f7fa;
+  --ink: #0f172a;
+  --ink-2: #334155;
+  --muted: #64748b;
+  --line: rgba(15, 23, 42, 0.09);
+  --paper: #ffffff;
+  --paper-2: rgba(255, 255, 255, 0.82);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.85);
+  --violet: #8b5cf6;
+  --violet-2: #a78bfa;
+  --red: #ef4444;
+  --red-2: #dc2626;
+  --amber: #f59e0b;
+  --blue: #3b82f6;
+  --gold: #d4af37;
+  --gold-2: #f4d77a;
+  --grad-mint: linear-gradient(160deg, var(--c2) 0%, var(--c3) 50%, var(--c4) 100%);
+  --grad-deep: linear-gradient(160deg, var(--c3) 0%, var(--c4) 100%);
+  --grad-paper: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  --grad-gold: linear-gradient(135deg, #f4d77a 0%, #d4af37 50%, #9a7622 100%);
+  --heading-grad: linear-gradient(115deg, #06140f 0%, var(--accent-deep) 46%, var(--c4) 76%, #0f172a 100%);
+  --shadow-lg: 0 24px 48px -18px rgba(15, 23, 42, 0.14), 0 4px 16px -6px rgba(15, 23, 42, 0.06);
+  --shadow-sm: 0 2px 10px -4px rgba(15, 23, 42, 0.08);
+}
+
+/* System Dark Mode Auto-detection when not explicitly overridden */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --ink: #f8fafc;
+    --ink-2: #cbd5e1;
+    --muted: #94a3b8;
+    --paper: #090b10;
+    --paper-2: #11151e;
+    --glass-bg: rgba(17, 21, 30, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.09);
+    --glass-highlight: rgba(255, 255, 255, 0.16);
+    --line: rgba(255, 255, 255, 0.09);
+    --bg-radial: var(--dark-bg-radial, #06281c);
+    --bg-base: var(--dark-bg-base, #030c08);
+    --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
+    --accent-deep: color-mix(in srgb, var(--accent) 85%, #ffffff);
+    --grad-paper: linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%);
+    --heading-grad: linear-gradient(115deg, #ffffff 0%, color-mix(in srgb, var(--c1) 42%, #ffffff) 52%, #ffffff 100%);
+    --shadow-lg: 0 28px 60px -20px rgba(0, 0, 0, 0.75), 0 8px 24px -8px rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 6px 16px -8px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.dark, body.night, html.dark, :root[data-theme='dark'] {
+  --ink: #f8fafc;
+  --ink-2: #cbd5e1;
+  --muted: #94a3b8;
+  --paper: #070b09;
+  --paper-2: #0d1512;
+  --glass-bg: rgba(11, 19, 16, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-highlight: rgba(255, 255, 255, 0.16);
+  --line: rgba(255, 255, 255, 0.09);
+  --bg-radial: var(--dark-bg-radial, #06281c);
+  --bg-base: var(--dark-bg-base, #030c08);
+  --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
+  --accent-deep: color-mix(in srgb, var(--accent) 85%, #ffffff);
+  --grad-paper: linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%);
+  --heading-grad: linear-gradient(115deg, #ffffff 0%, color-mix(in srgb, var(--c1) 42%, #ffffff) 52%, #ffffff 100%);
+  --shadow-lg: 0 28px 60px -20px rgba(0, 0, 0, 0.75), 0 8px 24px -8px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 6px 16px -8px rgba(0, 0, 0, 0.6);
+}
+
+body.night.amoled, .dark.amoled, :root[data-theme='dark'].amoled {
+  --paper: #000000;
+  --paper-2: #060807;
+  --glass-bg: rgba(8, 11, 10, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --line: rgba(255, 255, 255, 0.08);
+  --bg-radial: #030605;
+  --bg-base: #000000;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  overflow-x: clip;
+  background-color: var(--bg-base);
+  background-image:
+    radial-gradient(960px 560px at 10% -8%, color-mix(in srgb, var(--c2) 22%, transparent) 0%, transparent 62%),
+    radial-gradient(880px 520px at 92% 6%, color-mix(in srgb, var(--accent) 18%, transparent) 0%, transparent 60%),
+    radial-gradient(980px 580px at 50% 108%, color-mix(in srgb, var(--c3) 14%, transparent) 0%, transparent 65%),
+    radial-gradient(1100px 640px at 50% -40px, color-mix(in srgb, var(--accent) 15%, var(--bg-radial)) 0%, var(--bg-base) 76%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  transition: color 0.2s ease, background-color 0.25s ease;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Apple iOS Liquid Glass Surface — Cohesive theme-tinted refraction */
+.liquid-glass {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--glass-bg) 95%, rgba(255, 255, 255, 0.14)) 0%,
+    color-mix(in srgb, var(--glass-bg) 96%, transparent) 55%,
+    color-mix(in srgb, var(--glass-bg) 90%, color-mix(in srgb, var(--accent) 18%, transparent)) 100%
+  );
+  backdrop-filter: blur(12px) saturate(135%);
+  -webkit-backdrop-filter: blur(12px) saturate(135%);
+  border: 1px solid color-mix(in srgb, var(--glass-border) 68%, color-mix(in srgb, var(--accent) 28%, rgba(255, 255, 255, 0.16)));
+  box-shadow:
+    var(--shadow-lg),
+    0 0 0 1px color-mix(in srgb, var(--accent) 9%, transparent),
+    inset 0 1px 0 var(--glass-highlight),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.liquid-glass-card {
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, var(--paper-2) 96%, rgba(255, 255, 255, 0.10)) 0%,
+    color-mix(in srgb, var(--paper-2) 95%, var(--paper)) 54%,
+    color-mix(in srgb, var(--paper-2) 90%, color-mix(in srgb, var(--accent) 18%, transparent)) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--line) 68%, color-mix(in srgb, var(--accent) 26%, rgba(255, 255, 255, 0.14)));
+  box-shadow: var(--shadow-sm), inset 0 1px 0 var(--glass-highlight);
+  transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (min-width: 769px) and (hover: hover) {
+  .liquid-glass-card {
+    backdrop-filter: blur(6px) saturate(125%);
+    -webkit-backdrop-filter: blur(6px) saturate(125%);
+  }
+
+  .novexa-hover-glow:hover {
+    border-color: color-mix(in srgb, var(--accent) 58%, var(--c1));
+    box-shadow:
+      0 18px 36px -14px color-mix(in srgb, var(--accent) 36%, rgba(0, 0, 0, 0.45)),
+      inset 0 1px 0 var(--glass-highlight);
+  }
+}
+
+@media (max-width: 768px) {
+  .liquid-glass {
+    backdrop-filter: blur(8px) saturate(125%);
+    -webkit-backdrop-filter: blur(8px) saturate(125%);
+    background: color-mix(in srgb, var(--paper-2) 92%, transparent);
+  }
+
+  .liquid-glass-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+.low-perf .liquid-glass,
+.low-perf .ios-glass {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: color-mix(in srgb, var(--paper-2) 96%, var(--paper)) !important;
+}
+
+.low-perf .liquid-glass-card {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Virtualized off-screen list card rendering for smooth scrolling on weak CPUs */
+.novexa-list-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 185px;
+}
+
+/* Tactile iOS press & hover response */
+.novexa-tactile {
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+}
+.novexa-tactile:active {
+  transform: scale(0.972);
+}
+
+/* Cohesive Jewel-Toned Primary Buttons (Pure theme harmony, zero rainbow clash) */
+.ios-spectrum-btn,
+.ios-emerald-btn {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    var(--c4) 0%,
+    var(--accent-2) 38%,
+    var(--accent) 74%,
+    var(--c2) 100%
+  );
+  box-shadow:
+    0 12px 28px -8px color-mix(in srgb, var(--accent) 52%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.ios-spectrum-btn:hover,
+.ios-emerald-btn:hover {
+  filter: brightness(1.06);
+  box-shadow:
+    0 16px 34px -8px color-mix(in srgb, var(--accent) 62%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.52);
+}
+
+.ios-spectrum-btn::after,
+.ios-emerald-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 100%
+  );
+  transform: translate3d(-160%, 0, 0) skewX(-18deg);
+  animation: novexaSheen 4.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.novexa-aurora-strip {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    var(--c4) 0%,
+    var(--accent) 32%,
+    var(--c2) 56%,
+    var(--c1) 78%,
+    var(--accent) 100%
+  );
+}
+
+.novexa-aurora-strip::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 38%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  transform: translate3d(-140%, 0, 0);
+  animation: novexaStripSweep 3.8s linear infinite;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.novexa-gradient-text {
+  background: var(--heading-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Cohesive Theme-Harmonized Atmospheric Washes (Single luxury color family per theme) */
+.novexa-wash-emerald,
+.novexa-wash-primary {
+  background: radial-gradient(circle at 86% 18%, color-mix(in srgb, var(--accent) 24%, transparent) 0%, color-mix(in srgb, var(--c2) 8%, transparent) 42%, transparent 70%);
+}
+.novexa-wash-violet,
+.novexa-wash-soft {
+  background: radial-gradient(circle at 86% 18%, color-mix(in srgb, var(--c2) 22%, transparent) 0%, color-mix(in srgb, var(--c1) 8%, transparent) 44%, transparent 72%);
+}
+.novexa-wash-sky,
+.novexa-wash-bright {
+  background: radial-gradient(circle at 86% 18%, color-mix(in srgb, var(--c1) 20%, transparent) 0%, color-mix(in srgb, var(--accent) 10%, transparent) 44%, transparent 72%);
+}
+.novexa-wash-amber,
+.novexa-wash-deep {
+  background: radial-gradient(circle at 86% 18%, color-mix(in srgb, var(--c3) 26%, transparent) 0%, color-mix(in srgb, var(--c4) 12%, transparent) 46%, transparent 72%);
+}
+
+/* Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--muted) 35%, transparent);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--accent) 65%, transparent);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--muted) 35%, transparent) transparent;
+}
+
+/* Dynamic Text & Liquid iOS Animations (100% Compositor-only: transform & opacity) */
+@keyframes floatFadeUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-up {
+  animation: floatFadeUp 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes novexaPageTextIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.novexa-stagger > * {
+  animation: novexaPageTextIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.novexa-stagger > *:nth-child(1) { animation-delay: 0.03s; }
+.novexa-stagger > *:nth-child(2) { animation-delay: 0.08s; }
+.novexa-stagger > *:nth-child(3) { animation-delay: 0.13s; }
+.novexa-stagger > *:nth-child(4) { animation-delay: 0.18s; }
+.novexa-stagger > *:nth-child(5) { animation-delay: 0.23s; }
+.novexa-stagger > *:nth-child(n+6) { animation-delay: 0.27s; }
+
+.novexa-text-reveal {
+  animation: novexaPageTextIn 0.34s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+}
+
+.novexa-text-reveal-2 {
+  animation: novexaPageTextIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) 0.11s both;
+}
+
+.low-perf .novexa-stagger > *,
+.low-perf .novexa-text-reveal,
+.low-perf .novexa-text-reveal-2 {
+  animation-duration: 0.22s;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.78;
+  }
+  50% {
+    transform: scale(1.24);
+    opacity: 1;
+  }
+}
+
+@keyframes novexaFloatSoft {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -3px, 0);
+  }
+}
+
+@keyframes novexaUrgentTick {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes marqueeSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes iosAuroraFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.76;
+  }
+  50% {
+    transform: translate3d(24px, -18px, 0) scale(1.07);
+    opacity: 0.96;
+  }
+}
+
+@keyframes novexaAuroraDriftAlt {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.70;
+  }
+  50% {
+    transform: translate3d(-26px, -18px, 0) scale(1.09);
+    opacity: 0.92;
+  }
+}
+
+@keyframes novexaVictoryRing {
+  0% {
+    transform: scale(0.75);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes novexaStripSweep {
+  0% { transform: translate3d(-140%, 0, 0); }
+  100% { transform: translate3d(380%, 0, 0); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marqueeSlide 20s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 1.8s ease-in-out infinite;
+}
+
+.animate-novexa-float {
+  animation: novexaFloatSoft 3.6s ease-in-out infinite;
+}
+
+.animate-novexa-urgent {
+  animation: novexaUrgentTick 0.9s ease-in-out infinite;
+}
+
+.animate-ios-spectrum {
+  /* Static multi-stop spectrum surface; avoids continuous background-position repaints */
+}
+
+.animate-ios-aurora {
+  animation: iosAuroraFloat 14s ease-in-out infinite;
+}
+
+.animate-ios-aurora-alt {
+  animation: novexaAuroraDriftAlt 18s ease-in-out infinite;
+}
+
+.animate-victory-ring {
+  animation: novexaVictoryRing 1.45s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Flip number cards */
+.flip-card {
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.15);
+}
+
+/* Glass panel */
+.ios-glass {
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+}
+
+/* Hardware accelerated layer */
+.will-change-transform {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@keyframes novexaOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes novexaOrbitReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes novexaSheen {
+  0% { transform: translate3d(-160%, 0, 0) skewX(-18deg); }
+  50%, 100% { transform: translate3d(360%, 0, 0) skewX(-18deg); }
+}
+
+@keyframes novexaScanBeam {
+  0% { transform: translate3d(-100%, 0, 0); }
+  100% { transform: translate3d(220%, 0, 0); }
+}
+
+.animate-novexa-orbit {
+  animation: novexaOrbit 2.2s linear infinite;
+}
+
+.animate-novexa-orbit-reverse {
+  animation: novexaOrbitReverse 3.4s linear infinite;
+}
+
+.animate-novexa-sheen {
+  animation: novexaSheen 3.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.animate-novexa-scan {
+  animation: novexaScanBeam 1.25s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.low-perf .animate-ios-aurora,
+.low-perf .animate-ios-aurora-alt,
+.low-perf .ios-spectrum-btn::after,
+.low-perf .ios-emerald-btn::after,
+.low-perf .novexa-aurora-strip::after {
+  animation: none !important;
+  display: none !important;
+}
+
+.low-perf .animate-novexa-sheen,
+.low-perf .animate-novexa-orbit,
+.low-perf .animate-novexa-orbit-reverse,
+.low-perf .animate-novexa-float,
+.low-perf .animate-novexa-urgent,
+.low-perf .animate-pulse-glow {
+  animation: none !important;
+}
+
+.low-perf .animate-fade-up {
+  animation-duration: 0.12s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-novexa-orbit,
+  .animate-novexa-orbit-reverse,
+  .animate-novexa-sheen,
+  .animate-novexa-scan,
+  .animate-novexa-float,
+  .animate-novexa-urgent,
+  .animate-marquee,
+  .animate-pulse-glow,
+  .animate-ios-spectrum,
+  .animate-ios-aurora,
+  .animate-ios-aurora-alt,
+  .animate-victory-ring,
+  .novexa-aurora-strip,
+  .novexa-aurora-strip::after,
+  .novexa-gradient-text,
+  .ios-spectrum-btn,
+  .ios-spectrum-btn::after,
+  .ios-emerald-btn,
+  .ios-emerald-btn::after {
+    animation: none !important;
+  }
+}
+
